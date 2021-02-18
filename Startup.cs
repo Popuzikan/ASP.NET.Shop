@@ -7,46 +7,47 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using Shop.Data;
 using Shop.Data.Interfaces;
 using Shop.Data.Mocks;
+using Shop.Data.Repository;
 
 namespace Shop
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-        // служит для регистрации плагинов и модулев нашего проекта!!!!!! (пакетов)
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddTransient <IAllCars,MockCars>();
-            services.AddTransient<ICarsCategory, MockCategory>();
-            services.AddMvc();
+        private IConfigurationRoot _confString;
+
+        public Startup(IWebHostEnvironment hostEnv) {
+
+               _confString = new ConfigurationBuilder().SetBasePath(hostEnv.ContentRootPath).AddJsonFile("dbsettings.json").Build();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        // 
+        // служит для регистрации плагинов и модулев нашего проекта!!!!!! (пакетов)
+        public void ConfigureServices(IServiceCollection services) {
+
+            services.AddDbContext<AddDBContent>(option => option.UseSqlServer());
+
+            services.AddTransient <IAllCars, CarRepository>();
+            services.AddTransient<ICarsCategory, CategoryRepository>();
+            services.AddMvc();
+        }
+     
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
               
             app.UseStatusCodePages();
             app.UseStaticFiles();
 
-            if (env.IsDevelopment())
-                app.UseDeveloperExceptionPage();
-            else
-            {
-                app.UseExceptionHandler("/Error");
-                app.UseHsts();
-
-            }
+            app.UseDeveloperExceptionPage();
 
             app.UseRouting();
             app.UseCors();
 
-            app.UseEndpoints(endpoints =>
-            {
+            app.UseEndpoints(endpoints => {
+
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
             });
         }
