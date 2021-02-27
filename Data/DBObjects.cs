@@ -22,19 +22,19 @@ namespace Shop.Data
                     new Car {
                         Name = "Tesla",
                          ShortDesc = "Model-X",
-                          LongDesc = "",
+                          LongDesc = "Parspective Car",
                            Img = "/img/telsa.jpg",
-                            Price = 35000,
+                            Price = 30000,
                              IsFavourite = true,
                               Available = true,
                                Category = Categories["Электромобили"] 
                     },
                     new Car {
-                            Name = "Mercedes-Benz",
+                            Name = "Mercedes-Benz w222",
                              ShortDesc = "S-class",
                               LongDesc = "Buisness cars model",
                                Img = "/img/mercedes.jpg",
-                                Price = 35000,
+                                Price = 30000,
                                  IsFavourite = false,
                                   Available = false,
                                    Category = Categories["Классические автомобили"]
@@ -52,8 +52,8 @@ namespace Shop.Data
                 if (_categories == null) {
                     var list = new Category[] {
 
-                        new Category {Name = "Электромобили",Desc = "Современный вид транспорта" },
-                        new Category {Name = "Классические автомобили",Desc = "Машины с ДВС" }
+                        new Category {Name = "Электромобили", Desc = "Современный вид транспорта" },
+                        new Category {Name = "Классические автомобили", Desc = "Машины с ДВС" }
                     };
 
                     _categories = new Dictionary<string, Category>();

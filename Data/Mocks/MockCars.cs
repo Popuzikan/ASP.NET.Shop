@@ -14,8 +14,8 @@ namespace Shop.Data.Mocks
             get {
                 return new List<Car> {
                         new Car {
-                            Name = "Tesla", ShortDesc = "Model-X", 
-                            LongDesc = "", Img = "/img/telsa.jpg", Price = 35000, IsFavourite = true, 
+                            Name = "Tesla", ShortDesc = "Model-X",
+                            LongDesc = "", Img = "/img/telsa.jpg", Price = 35000, IsFavourite = true,
                             Available = true , Category = _categoryCars.AllCategories.First()
                         },
                         new Car {

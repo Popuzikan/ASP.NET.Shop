@@ -49,13 +49,11 @@ namespace Shop
 
             app.UseEndpoints(endpoints =>
             {
-
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
             });
 
             using (var scope = app.ApplicationServices.CreateScope())
             {
-
                 AppDBContent content = scope.ServiceProvider.GetRequiredService<AppDBContent>();
                 //// для работы с Базой данных
                 DBObjects.Initial(content);
