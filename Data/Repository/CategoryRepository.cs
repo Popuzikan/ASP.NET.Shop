@@ -9,9 +9,9 @@ namespace Shop.Data.Repository
 {
     public class CategoryRepository : ICarsCategory
     {
-        private readonly AddDBContent _addDBContent;
+        private readonly AppDBContent _addDBContent;
 
-        public CategoryRepository(AddDBContent addDBContent) {
+        public CategoryRepository(AppDBContent addDBContent) {
 
             _addDBContent = addDBContent;
         }

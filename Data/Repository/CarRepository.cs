@@ -2,7 +2,7 @@
 using Shop.Data.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,9 +11,9 @@ namespace Shop.Data.Repository
     public class CarRepository : IAllCars
     {
 
-        private readonly AddDBContent _addDBContent;
+        private readonly AppDBContent _addDBContent;
 
-        public CarRepository(AddDBContent addDBContent) {
+        public CarRepository(AppDBContent addDBContent) {
 
             _addDBContent = addDBContent;
         }

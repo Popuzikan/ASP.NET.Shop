@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,15 +29,16 @@ namespace Shop
         // служит для регистрации плагинов и модулев нашего проекта!!!!!! (пакетов)
         public void ConfigureServices(IServiceCollection services) {
 
-            services.AddDbContext<AddDBContent>(option => option.UseSqlServer());
+            services.AddDbContext<AppDBContent>(option => option.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
 
             services.AddTransient <IAllCars, CarRepository>();
             services.AddTransient<ICarsCategory, CategoryRepository>();
             services.AddMvc();
         }
-     
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
-              
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+
             app.UseStatusCodePages();
             app.UseStaticFiles();
 
@@ -46,10 +47,19 @@ namespace Shop
             app.UseRouting();
             app.UseCors();
 
-            app.UseEndpoints(endpoints => {
+            app.UseEndpoints(endpoints =>
+            {
 
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
             });
-        }
+
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+
+                AppDBContent content = scope.ServiceProvider.GetRequiredService<AppDBContent>();
+                //// для работы с Базой данных
+                DBObjects.Initial(content);
+            }
+        }        
     }
 }

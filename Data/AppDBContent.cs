@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Shop.Data
 {
-    public class AddDBContent : DbContext
+    public class AppDBContent : DbContext
     {
-        public AddDBContent(DbContextOptions<AddDBContent> options):base(options) {
+        public AppDBContent(DbContextOptions<AppDBContent> options):base(options) {
 
         }
 
