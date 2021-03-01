@@ -3,19 +3,9 @@
 
     <div class="row mt-5 md-2"> 
         @{
-            foreach (var car in Model.AllCars) {              
-                <div class="col-lg-4">
+            foreach (Shop.Data.Models.Car car in Model.AllCars) {
 
-                    <img class ="img-thumbnail" src ="@car.Img" alt = "@car.Name" />
-
-                    <h2>@car.Name</h2>
-
-                    <p>@car.ShortDesc</p>
-
-                    <p>Price: @car.Price.ToString("c")</p>
-
-                    <p><a class ="btn btn-warning" href="#">More details</a></p>
-                </div>
+                @Html.Partial("AllCars", car)
             }
         }
     </div>

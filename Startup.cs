@@ -38,7 +38,6 @@ namespace Shop
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
             app.UseStatusCodePages();
             app.UseStaticFiles();
 
