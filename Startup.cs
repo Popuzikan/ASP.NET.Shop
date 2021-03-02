@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Shop.Data;
 using Shop.Data.Interfaces;
 using Shop.Data.Mocks;
+using Shop.Data.Models;
 using Shop.Data.Repository;
 
 namespace Shop
@@ -31,17 +32,28 @@ namespace Shop
 
             services.AddDbContext<AppDBContent>(option => option.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
 
-            services.AddTransient <IAllCars, CarRepository>();
+            services.AddTransient<IAllCars, CarRepository>();
             services.AddTransient<ICarsCategory, CategoryRepository>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            //добавление сервиса позволяющего работать пользователям с разными корзинами
+            services.AddScoped(sp => ShopCart.GetCart(sp));
+
             services.AddMvc();
+
+            services.AddMemoryCache();
+
+            services.AddSession();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseStatusCodePages();
-            app.UseStaticFiles();
-
+            app.UseStaticFiles();    
             app.UseDeveloperExceptionPage();
+            app.UseSession();
 
             app.UseRouting();
             app.UseCors();
