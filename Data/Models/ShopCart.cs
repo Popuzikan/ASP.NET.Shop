@@ -15,9 +15,7 @@ namespace Shop.Data.Models
 
         private readonly AppDBContent _addDBContent;
 
-        public ShopCart(AppDBContent addDBContent)
-        {
-
+        public ShopCart(AppDBContent addDBContent) {
             _addDBContent = addDBContent;
         }
 
@@ -32,6 +30,17 @@ namespace Shop.Data.Models
             session.SetString("CartId", shopCartId);
 
             return new ShopCart(context) { ShopCartId = shopCartId };
+        }
+
+        public void AddToCart(Car car, int amout) {
+
+            _addDBContent.ShopCartItems.Add( new ShopCartItem() { 
+                ShopCartId = ShopCartId,
+                Auto = car,
+                Price = car.Price
+            });
+
+            _addDBContent.SaveChanges();
         }
 
     }
