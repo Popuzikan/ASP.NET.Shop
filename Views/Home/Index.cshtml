@@ -1,0 +1,11 @@
+﻿@model HomeViewModel
+
+<h1>Favourite auto for Sale!</h1>
+<div class="row mt-5 md-2">
+    @{
+        foreach (Shop.Data.Models.Car car in Model.FavCars) {
+
+            @Html.Partial("AllCars", car)
+        }
+    }
+</div>

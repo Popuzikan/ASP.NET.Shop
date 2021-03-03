@@ -46,8 +46,5 @@ namespace Shop.Controllers
             return RedirectToAction("Index");
 
         }
-
-
-
     }
 }

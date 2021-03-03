@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Shop.ViewModels
 {
-    public class ShopCartViewModel
-    {
-        public ShopCart ShopCart { get; set; }
+    public class HomeViewModel {
+
+        public IEnumerable<Car> FavCars { get; set; }
     }
 }
