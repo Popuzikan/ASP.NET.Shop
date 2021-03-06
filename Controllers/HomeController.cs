@@ -12,15 +12,14 @@ namespace Shop.Controllers
     {
         private readonly IAllCars _allCars;
 
-        public HomeController(IAllCars allCars)  {
+        public HomeController(IAllCars allCars) {
 
             _allCars = allCars;
         }
 
         public ViewResult Index() {
 
-            var obj = new HomeViewModel()
-            {
+            var obj = new HomeViewModel() {
 
                 FavCars = _allCars.GetFavCars
             };

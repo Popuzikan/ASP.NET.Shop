@@ -38,7 +38,6 @@ namespace Shop
             services.AddMemoryCache();
 
             services.AddSession();
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -53,11 +52,12 @@ namespace Shop
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("categoryFilt", "Car/{action}/{category?}", new {Controller="Car", action = "List" });
             });
 
-            using (var scope = app.ApplicationServices.CreateScope())
-            {
+            using (var scope = app.ApplicationServices.CreateScope()) {
+
                 AppDBContent content = scope.ServiceProvider.GetRequiredService<AppDBContent>();
                 //// для работы с Базой данных
                 DBObjects.Initial(content);
