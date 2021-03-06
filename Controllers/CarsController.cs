@@ -15,8 +15,8 @@ namespace Shop.Controllers
 
         private readonly ICarsCategory _allCategory;
 
-        public CarsController(IAllCars allCars, ICarsCategory allCarsCategory)
-        {
+        public CarsController(IAllCars allCars, ICarsCategory allCarsCategory) {
+
             _allCars = allCars;
             _allCategory = allCarsCategory;
         }
@@ -46,11 +46,8 @@ namespace Shop.Controllers
                     cars = _allCars.Cars.Where(i => i.Category.Name.Equals("Классические автомобили")).OrderBy(i => i.Id);
 
                     _currCategory = category;
-                }
-                   
+                }           
             }
-
-            
 
             var carObj = new CarsListViewModel {
 
@@ -60,8 +57,7 @@ namespace Shop.Controllers
             };
 
             ViewBag.Title = "Pages whis Auto";
-            return View(carObj);
-           
+            return View(carObj);          
         }   
     }
 }
