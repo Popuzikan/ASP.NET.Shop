@@ -20,7 +20,7 @@ namespace Shop
                _confString = new ConfigurationBuilder().SetBasePath(hostEnv.ContentRootPath).AddJsonFile("dbsettings.json").Build();
         }
 
-        // служит дл€ регистрации плагинов и модулев нашего проекта!!!!!! (пакетов)
+        // служит дл€ регистрации плагинов и модулев нашего проекта!!!!!! (пакетов) которые мы хотим успользовать
         public void ConfigureServices(IServiceCollection services) {
 
             services.AddDbContext<AppDBContent>(option => option.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
@@ -33,6 +33,7 @@ namespace Shop
             //добавление сервиса позвол€ющего работать пользовател€м с разными корзинами
             services.AddScoped(sp => ShopCart.GetCart(sp));
 
+            // добавл€ем поддержку ћVS в нашем проекте
             services.AddMvc();
 
             services.AddMemoryCache();
@@ -42,9 +43,12 @@ namespace Shop
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseStatusCodePages();
-            app.UseStaticFiles();    
-            app.UseDeveloperExceptionPage();
+            app.UseStatusCodePages(); // отображает коды страницы
+
+            app.UseStaticFiles(); // подключает возможность работы со статическими данными (файлами)
+
+            app.UseDeveloperExceptionPage(); // отображает страницу с ошибками (если есть)
+
             app.UseSession();
 
             app.UseRouting();

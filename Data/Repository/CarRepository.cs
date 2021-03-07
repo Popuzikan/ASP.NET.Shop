@@ -10,7 +10,6 @@ namespace Shop.Data.Repository
 {
     public class CarRepository : IAllCars
     {
-
         private readonly AppDBContent _addDBContent;
 
         public CarRepository(AppDBContent addDBContent) {

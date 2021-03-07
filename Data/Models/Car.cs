@@ -33,6 +33,7 @@ namespace Shop.Data.Models
         // небольшое описание
         public string ShortDesc { get; set; }
 
+        // категория каждого авто Электрическое или на ДВС
         public virtual Category Category { get; set; }
 
     }

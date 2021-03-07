@@ -13,6 +13,7 @@ namespace Shop.Data.Models
 
         public string Desc{ get; set; }
 
+        // список товаров (автомобилей в каждой категории)
         public List<Car> Cars { get; set; }
     }
 }
