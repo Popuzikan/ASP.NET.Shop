@@ -12,7 +12,6 @@ namespace Shop.Data
        
         public static void Initial(AppDBContent content) {
             
-               
             if (!content.Category.Any())
                 content.Category.AddRange(Categories.Select(c => c.Value));
 
@@ -35,9 +34,20 @@ namespace Shop.Data
                               LongDesc = "Buisness cars model",
                                Img = "/img/mercedes.jpg",
                                 Price = 30000,
-                                 IsFavourite = false,
+                                 IsFavourite = true,
                                   Available = false,
                                    Category = Categories["Классические автомобили"]
+                    },                  
+                    new Car
+                    {
+                         Name = "Nissan",
+                         ShortDesc = "Leaf 2",
+                         LongDesc = "ElectroCar",
+                         Img = "/img/NissanLeaf.jpg",
+                         Price = 20000,
+                         IsFavourite = true,
+                         Available = true,
+                         Category = Categories["Электромобили"]
                     }); 
             }
 
