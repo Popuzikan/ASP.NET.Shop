@@ -13,7 +13,6 @@ namespace Shop.Data.Models
 
         public List<ShopCartItem> ListShopItems { get; set; }
 
-
         private readonly AppDBContent _addDBContent;
 
         public ShopCart(AppDBContent addDBContent) {
