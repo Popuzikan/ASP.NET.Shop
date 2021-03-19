@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shop.Data.Interfaces
 {
-    interface IAllOrder {
+    public interface IAllOrder {
         void OrderCreator(Order order);
     }
 }

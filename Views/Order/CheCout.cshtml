@@ -1,0 +1,24 @@
+﻿@model Order
+
+
+    <div class=" row">
+        
+        <h3>Оформление заказа</h3>
+
+        <form asp-action="CheCout" method="post" class="form-horizontal">
+
+            <div class="form-group">
+                <label asp-for="Name"></label>
+
+                <div class="col-md-5">
+
+                    <input asp-for="Name" class="form-control"/>
+
+                    <span asp-validation-for="Name" class="text-danger"></span>
+
+
+
+                </div>
+            </div>
+        </form>
+    </div> 
