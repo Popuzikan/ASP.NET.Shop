@@ -32,7 +32,7 @@ namespace Shop.Data.Models
             return new ShopCart(context) { ShopCartId = shopCartId };
         }
 
-        public void AddToCart(Car car) {
+        public void addToCart(Car car) {
 
             _addDBContent.ShopCartItems.Add( new ShopCartItem() { 
                 ShopCartId = ShopCartId,

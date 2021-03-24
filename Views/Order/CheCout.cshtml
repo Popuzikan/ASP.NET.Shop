@@ -1,9 +1,8 @@
 ﻿@model Order
 
-
     <div class=" row">
         
-        <h3>Оформление заказа</h3>
+        <h3>Завершить заказ</h3>
 
         <form asp-action="CheCout" method="post" class="form-horizontal">
 
@@ -11,14 +10,46 @@
                 <label asp-for="Name"></label>
 
                 <div class="col-md-5">
-
-                    <input asp-for="Name" class="form-control"/>
-
+                    <input asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
 
+            </div>
 
+            <div class="form-group">
+                <label asp-for="SurName"></label>
 
+                <div class="col-md-5">
+                    <input asp-for="SurName" class="form-control" />
+                    <span asp-validation-for="SurName" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Adress"></label>
+                <div class="col-md-5">
+                    <input asp-for="Adress" class="form-control" />
+                    <span asp-validation-for="Adress" class="text-danger"></span>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label asp-for="Phone"></label>
+                <div class="col-md-5">
+                    <input asp-for="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <div class="col-md-5">
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <input class="btn btn-success" type ="submit" value="Pay" />
         </form>
     </div> 

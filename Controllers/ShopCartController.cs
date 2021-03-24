@@ -41,7 +41,7 @@ namespace Shop.Controllers
             var item = _carRep.Cars.FirstOrDefault(i => i.Id.Equals(id));
 
             if (item != null)
-                _shopCart.AddToCart(item);
+                _shopCart.addToCart(item);
 
             return RedirectToAction("Index");
 
