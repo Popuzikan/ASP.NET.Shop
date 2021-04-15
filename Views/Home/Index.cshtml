@@ -1,11 +1,12 @@
 ﻿@model HomeViewModel
 
-<h1>Favourite auto for Sale!</h1>
-<div class="row mt-5 md-2">
+<h2>Favourite auto</h2>
+
+<div class="row mt-2 md-2">
     @{
         foreach (Shop.Data.Models.Car car in Model.FavCars) {
 
-            @Html.Partial("AllCars", car)
+            @Html.PartialAsync("AllCars", car).Result;
         }
     }
 </div>

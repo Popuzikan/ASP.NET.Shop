@@ -1,11 +1,10 @@
-﻿<h1>All auto</h1>   
-    <h3>@Model.CurrCategory</h3>
-
-    <div class="row mt-5 md-2"> 
+﻿<h2>All auto @Model.CurrCategory</h2>
+  
+    <div class="row mt-2 md-2"> 
         @{
             foreach (Shop.Data.Models.Car car in Model.AllCars) {
 
-                @Html.Partial("AllCars", car)
+                @Html.PartialAsync("AllCars", car).Result;
             }
         }
     </div>
